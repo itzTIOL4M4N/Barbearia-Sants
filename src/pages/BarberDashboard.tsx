@@ -111,6 +111,11 @@ const BarberDashboard = () => {
                             <Clock className="w-3.5 h-3.5" />
                             {d.toLocaleDateString("pt-BR")} às {d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}
                           </span>
+                          {a.barber && (
+                            <span className="flex items-center gap-1.5 text-primary font-medium">
+                              <Scissors className="w-3.5 h-3.5" /> {a.barber}
+                            </span>
+                          )}
                         </div>
                         <p className="text-sm">
                           <span className="font-medium">{a.services?.name}</span>
