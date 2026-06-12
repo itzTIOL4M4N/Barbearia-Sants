@@ -277,6 +277,9 @@ const Booking = () => {
                 <div key={a.id} className="p-4 rounded-lg bg-card border border-border flex justify-between items-center gap-3">
                   <div className="flex-1">
                     <p className="font-semibold">{a.services?.name}</p>
+                    {a.barber && (
+                      <p className="text-xs text-primary font-medium">com {a.barber}</p>
+                    )}
                     <p className="text-sm text-muted-foreground">
                       {new Date(a.appointment_date).toLocaleString("pt-BR")}
                     </p>
