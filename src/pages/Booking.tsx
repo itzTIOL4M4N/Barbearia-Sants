@@ -32,6 +32,7 @@ const Booking = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [serviceId, setServiceId] = useState(params.get("service") || "");
+  const [barber, setBarber] = useState<string>("");
   const [date, setDate] = useState<Date | undefined>();
   const [time, setTime] = useState<string>("");
 
