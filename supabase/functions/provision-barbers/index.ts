@@ -21,6 +21,20 @@ Deno.serve(async (req) => {
   );
 
   const results: any[] = [];
+
+  // remove barbeiros obsoletos
+  const OBSOLETE = ["felipe@barbeariasants.com"];
+  const { data: allUsers } = await admin.auth.admin.listUsers();
+  for (const email of OBSOLETE) {
+    const u = allUsers?.users.find((x) => x.email === email);
+    if (u) {
+      await admin.from("user_roles").delete().eq("user_id", u.id);
+      await admin.from("profiles").delete().eq("user_id", u.id);
+      await admin.auth.admin.deleteUser(u.id);
+      results.push({ removed: email });
+    }
+  }
+
   for (const b of BARBERS) {
     // tenta criar
     const { data: created, error } = await admin.auth.admin.createUser({
