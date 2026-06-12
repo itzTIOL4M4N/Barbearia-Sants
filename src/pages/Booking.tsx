@@ -97,16 +97,18 @@ const Booking = () => {
         customer_name: name.trim(),
         customer_phone: phone.trim(),
         service_id: serviceId,
+        barber,
         appointment_date: d.toISOString(),
       });
       if (error) throw error;
     },
     onSuccess: () => {
       toast.success("Agendamento confirmado!", {
-        description: "Você receberá uma confirmação. Aguardamos você!",
+        description: `Você cortará com ${barber}. Aguardamos você!`,
       });
       setDate(undefined);
       setTime("");
+      setBarber("");
       queryClient.invalidateQueries({ queryKey: ["my-appointments"] });
     },
     onError: (e: any) => toast.error(e.message || "Erro ao agendar"),
