@@ -1,1 +1,4 @@
 project_id = "ljmvvcwctwbpygqdbmuz"
+
+[functions.provision-barbers]
+verify_jwt = false
