@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Calendar, DollarSign, CheckCircle2, XCircle, Phone, User, Clock, FileText } from "lucide-react";
+import { Calendar, DollarSign, CheckCircle2, XCircle, Phone, User, Clock, FileText, Scissors } from "lucide-react";
 
 const BarberDashboard = () => {
   const { user, role, loading } = useAuth();
