@@ -184,6 +184,30 @@ const Booking = () => {
             </div>
           )}
 
+          <div>
+            <label className="flex items-center gap-2 text-sm font-medium mb-2">
+              <Scissors className="w-4 h-4 text-primary" /> Barbeiro
+            </label>
+            <div className="grid grid-cols-3 gap-2">
+              {BARBERS.map((b) => (
+                <button
+                  key={b}
+                  type="button"
+                  onClick={() => setBarber(b)}
+                  className={cn(
+                    "px-4 py-3 rounded-lg border text-sm font-medium transition",
+                    barber === b
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-background border-border hover:border-primary/60"
+                  )}
+                >
+                  {b}
+                </button>
+              ))}
+            </div>
+          </div>
+
+
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <label className="flex items-center gap-2 text-sm font-medium mb-2">
