@@ -116,7 +116,7 @@ const Booking = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !phone.trim() || !serviceId || !date || !time) {
+    if (!name.trim() || !phone.trim() || !serviceId || !barber || !date || !time) {
       toast.error("Preencha todos os campos");
       return;
     }
