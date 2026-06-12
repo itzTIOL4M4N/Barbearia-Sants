@@ -8,7 +8,7 @@ const cors = {
 
 const BARBERS = [
   { name: "Lipão",  email: "lipao@barbeariasants.com",   password: "Lipao@Sants2026" },
-  { name: "Felipe", email: "felipe@barbeariasants.com",  password: "Felipe@Sants2026" },
+  { name: "Arthur", email: "arthur@barbeariasants.com",  password: "Arthur@Sants2026" },
   { name: "Gabriel",email: "gabriel@barbeariasants.com", password: "Gabriel@Sants2026" },
 ];
 
