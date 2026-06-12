@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Calendar, DollarSign, CheckCircle2, XCircle, Phone, User, Clock, FileText } from "lucide-react";
+import { Calendar, DollarSign, CheckCircle2, XCircle, Phone, User, Clock, FileText, Scissors } from "lucide-react";
 
 const BarberDashboard = () => {
   const { user, role, loading } = useAuth();
@@ -111,6 +111,11 @@ const BarberDashboard = () => {
                             <Clock className="w-3.5 h-3.5" />
                             {d.toLocaleDateString("pt-BR")} às {d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}
                           </span>
+                          {a.barber && (
+                            <span className="flex items-center gap-1.5 text-primary font-medium">
+                              <Scissors className="w-3.5 h-3.5" /> {a.barber}
+                            </span>
+                          )}
                         </div>
                         <p className="text-sm">
                           <span className="font-medium">{a.services?.name}</span>

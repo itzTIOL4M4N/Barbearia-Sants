@@ -4,7 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
-import { CalendarIcon, Clock, User, Phone } from "lucide-react";
+import { CalendarIcon, Clock, User, Phone, Scissors } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import Header from "@/components/Header";
@@ -21,6 +21,8 @@ const TIME_SLOTS = Array.from({ length: 22 }, (_, i) => {
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
 });
 
+const BARBERS = ["Lipão", "Felipe", "Gabriel"] as const;
+
 const Booking = () => {
   const { user, loading } = useAuth();
   const navigate = useNavigate();
@@ -30,6 +32,7 @@ const Booking = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [serviceId, setServiceId] = useState(params.get("service") || "");
+  const [barber, setBarber] = useState<string>("");
   const [date, setDate] = useState<Date | undefined>();
   const [time, setTime] = useState<string>("");
 
@@ -94,16 +97,18 @@ const Booking = () => {
         customer_name: name.trim(),
         customer_phone: phone.trim(),
         service_id: serviceId,
+        barber,
         appointment_date: d.toISOString(),
       });
       if (error) throw error;
     },
     onSuccess: () => {
       toast.success("Agendamento confirmado!", {
-        description: "Você receberá uma confirmação. Aguardamos você!",
+        description: `Você cortará com ${barber}. Aguardamos você!`,
       });
       setDate(undefined);
       setTime("");
+      setBarber("");
       queryClient.invalidateQueries({ queryKey: ["my-appointments"] });
     },
     onError: (e: any) => toast.error(e.message || "Erro ao agendar"),
@@ -111,7 +116,7 @@ const Booking = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !phone.trim() || !serviceId || !date || !time) {
+    if (!name.trim() || !phone.trim() || !serviceId || !barber || !date || !time) {
       toast.error("Preencha todos os campos");
       return;
     }
@@ -178,6 +183,30 @@ const Booking = () => {
               <span className="text-primary font-semibold">{selected.name}</span> · {selected.duration_minutes} min · <span className="text-primary font-bold">R${selected.price}</span>
             </div>
           )}
+
+          <div>
+            <label className="flex items-center gap-2 text-sm font-medium mb-2">
+              <Scissors className="w-4 h-4 text-primary" /> Barbeiro
+            </label>
+            <div className="grid grid-cols-3 gap-2">
+              {BARBERS.map((b) => (
+                <button
+                  key={b}
+                  type="button"
+                  onClick={() => setBarber(b)}
+                  className={cn(
+                    "px-4 py-3 rounded-lg border text-sm font-medium transition",
+                    barber === b
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-background border-border hover:border-primary/60"
+                  )}
+                >
+                  {b}
+                </button>
+              ))}
+            </div>
+          </div>
+
 
           <div className="grid md:grid-cols-2 gap-4">
             <div>
@@ -248,6 +277,9 @@ const Booking = () => {
                 <div key={a.id} className="p-4 rounded-lg bg-card border border-border flex justify-between items-center gap-3">
                   <div className="flex-1">
                     <p className="font-semibold">{a.services?.name}</p>
+                    {a.barber && (
+                      <p className="text-xs text-primary font-medium">com {a.barber}</p>
+                    )}
                     <p className="text-sm text-muted-foreground">
                       {new Date(a.appointment_date).toLocaleString("pt-BR")}
                     </p>
