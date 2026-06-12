@@ -67,7 +67,9 @@ const Header = () => {
               className="block text-sm hover:text-primary">{l.label}</Link>
           ))}
           {role === "barbeiro" && (
-            <Link to="/barbeiro" onClick={() => setOpen(false)} className="block text-sm text-primary font-semibold">Painel</Link>
+            <Link to="/barbeiro" onClick={() => setOpen(false)} className="block text-sm text-primary font-semibold">
+              Minha Conta
+            </Link>
           )}
           {user ? (
             <button onClick={() => { handleLogout(); setOpen(false); }} className="block text-sm">Sair</button>
