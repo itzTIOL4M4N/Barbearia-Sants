@@ -21,7 +21,7 @@ const TIME_SLOTS = Array.from({ length: 22 }, (_, i) => {
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
 });
 
-const BARBERS = ["Lipão", "Felipe", "Gabriel"] as const;
+const BARBERS = ["Lipão", "Arthur", "Gabriel"] as const;
 
 const Booking = () => {
   const { user, loading } = useAuth();
