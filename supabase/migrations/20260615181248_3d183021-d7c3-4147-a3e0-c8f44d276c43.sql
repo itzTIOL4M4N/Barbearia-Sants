@@ -1,0 +1,1 @@
+UPDATE public.services SET name = 'Barba Lisa' WHERE name = 'Barba Liza';
