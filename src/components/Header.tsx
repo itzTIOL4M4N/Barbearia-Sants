@@ -11,9 +11,10 @@ const Header = () => {
 
   const links = [
     { to: "/catalogo", label: "Catálogo" },
-    { to: "/precos", label: "Preço" },
+    { to: "/precos", label: "Preços" },
     { to: "/sobre", label: "Sobre" },
     { to: "/produtos", label: "Produtos" },
+    { to: "/galeria", label: "Galeria" },
     { to: "/agendar", label: "Agendamento" },
   ];
 

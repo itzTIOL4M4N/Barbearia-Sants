@@ -2,16 +2,17 @@ import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import Footer from "@/components/Footer";
-import { Scissors, DollarSign, Info, Calendar, ShoppingBag } from "lucide-react";
+import { Scissors, DollarSign, Info, Calendar, ShoppingBag, Image } from "lucide-react";
 
 const Index = () => {
   const navigate = useNavigate();
 
   const cards = [
     { to: "/catalogo", icon: <Scissors />, title: "Catálogo", desc: "Cortes, barbas e químicas" },
-    { to: "/precos", icon: <DollarSign />, title: "Preço", desc: "Tabela completa de valores" },
+    { to: "/precos", icon: <DollarSign />, title: "Preços", desc: "Tabela completa de valores" },
     { to: "/sobre", icon: <Info />, title: "Sobre", desc: "Conheça a barbearia" },
     { to: "/produtos", icon: <ShoppingBag />, title: "Produtos", desc: "Itens à venda" },
+    { to: "/galeria", icon: <Image />, title: "Galeria", desc: "Veja nossos cortes" },
     { to: "/agendar", icon: <Calendar />, title: "Agendamento", desc: "Marque seu horário" },
   ];
 
