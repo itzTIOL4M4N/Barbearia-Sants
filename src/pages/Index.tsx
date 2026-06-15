@@ -22,7 +22,7 @@ const Index = () => {
       <main className="flex-1">
         <HeroSection onBookClick={() => navigate("/agendar")} />
         <section className="px-6 pb-20 max-w-6xl mx-auto w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {cards.map((c) => (
               <button key={c.to} onClick={() => navigate(c.to)}
                 className="text-left p-6 rounded-xl bg-card border border-border hover:border-primary/50 transition-all group">
