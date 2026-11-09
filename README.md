@@ -6,7 +6,7 @@ O projeto busca facilitar o processo de agendamento de horários, a organizaçã
 
 ## 🌐 Demonstração
 
-- **Aplicação:** https://itztiol4m4n.github.io/Barbearia-Sants/
+- **Aplicação:** https://barbearia-sants.vercel.app/
 - **Vídeo demonstrativo:** https://youtu.be/lZ7Xb1PVt6M
 
 ## 🎯 Objetivo do Projeto
